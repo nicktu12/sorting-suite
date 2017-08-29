@@ -11,6 +11,4 @@ const insertionSort = (array) => {
   return array
 };
 
-test
-
 export default insertionSort
