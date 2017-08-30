@@ -1,16 +1,30 @@
-const mergeSort = (array) => {
 
-  
+function mergeSort(arr) {
+    if (arr.length < 2)
+        return arr;
 
-  // for (let i = 0; i < array.length; i++) {
-  //   for (var j = i-1; j >= 0; j--) {
-  //     if (array[j+1] < array[j]) {
-  //       [ array[j], array[j+1] ] = [array[j+1], array[j]]
-  //     }
-  //   }
-  // }
-  //
-  // return array
-};
+    var left   = arr.slice(0, parseInt(arr.length / 2));
+    var right  = arr.slice(parseInt(arr.length / 2), arr.length);
 
-export default mergeSort
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    var result = [];
+    while (left.length && right.length) {
+        if (left[0] <= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+
+    while (left.length)
+        result.push(left.shift());
+
+    while (right.length)
+        result.push(right.shift());
+    return result;
+}
+
+module.exports = {mergeSort, merge};

@@ -1,5 +1,5 @@
-import { assert } from 'chai';
-import mergeSort from '../scripts/merge-sort'
+import { assert, expect } from 'chai';
+const {mergeSort, merge} = require('../scripts/merge-sort');
 
 
 function randomArrayGenerator (count, max) {
@@ -19,12 +19,11 @@ describe('TDD with mergeSort', () => {
 
   it('should should sort an array of more than one number', () => {
 
-    let newArray = randomArrayGenerator(5000, 10000);
-    mergeSort(newArray)
-    assert.equal(newArray[0] <= newArray[1], true);
-    assert.equal(newArray[Math.floor(newArray.length / 2)] <= newArray[Math.floor(newArray.length / 2)+1], true);
-    assert.equal(newArray[newArray.length - 1] >= newArray[newArray.length - 2], true);
-
+    let newArray = randomArrayGenerator(100, 100);
+    let sortedArray = mergeSort(newArray);
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
   })
 
 })
