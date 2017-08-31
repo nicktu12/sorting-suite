@@ -9,6 +9,8 @@ const randomNumbersArrayGen = (count, max) => {
   return numbers
 }
 
+console.log(test)
+
 const randomLettersArrayGen = (count) => {
   let letters = [];
 
