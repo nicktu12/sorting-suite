@@ -1,6 +1,6 @@
-import { assert, expect } from 'chai';
+import {assert, expect} from 'chai';
 import bubbleSort from '../scripts/bubble-sort';
-const { randomNumbersArrayGen, randomLettersArrayGen } = require('../scripts/random');
+const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
 
 describe('TDD with bubbleSort', () => {
 
@@ -59,5 +59,9 @@ describe('TDD with bubbleSort', () => {
       expect(sortedArray[i] <= sortedArray[i+1], true);
     }
   })
+
+  // it('should log the performance of the algorithm on a large array', () => {
+  //   console.log('do a thing!')
+  // })
 
 })
