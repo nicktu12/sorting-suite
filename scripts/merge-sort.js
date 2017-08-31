@@ -1,15 +1,14 @@
+const mergeSort = (array) => {
+    if (array.length < 2)
+        return array;
 
-function mergeSort(arr) {
-    if (arr.length < 2)
-        return arr;
-
-    var left   = arr.slice(0, parseInt(arr.length / 2));
-    var right  = arr.slice(parseInt(arr.length / 2), arr.length);
+    var left   = array.slice(0, parseInt(array.length / 2));
+    var right  = array.slice(parseInt(array.length / 2), array.length);
 
     return merge(mergeSort(left), mergeSort(right));
 }
 
-function merge(left, right) {
+const merge = (left, right) => {
     var result = [];
     while (left.length && right.length) {
       left[0] <= right[0] ?

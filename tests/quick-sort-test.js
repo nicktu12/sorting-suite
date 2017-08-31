@@ -1,16 +1,16 @@
 import {assert, expect} from 'chai';
-import bubbleSort from '../scripts/bubble-sort';
+import quickSort from '../scripts/quick-sort';
 const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
 
-describe('TDD with bubbleSort', () => {
+describe('TDD with quickSort', () => {
 
   it('should be a function', () => {
-    assert.equal(typeof bubbleSort, 'function');
+    assert.equal(typeof quickSort, 'function');
   })
 
   it('should sort an array of one number', () => {
     let unsortedArray = [2];
-    let sortedArray = bubbleSort(unsortedArray);
+    let sortedArray = quickSort(unsortedArray);
 
     for (let i = 0; i < sortedArray.length; i++) {
       expect(sortedArray[i] <= sortedArray[i+1], false);
@@ -19,7 +19,7 @@ describe('TDD with bubbleSort', () => {
 
   it('should should sort an array of two numbers', () => {
     let unsortedArray = [2, 1];
-    let sortedArray = bubbleSort(unsortedArray);
+    let sortedArray = quickSort(unsortedArray);
 
     for (let i = 0; i < unsortedArray.length; i++) {
       expect(unsortedArray[i] <= unsortedArray[i+1], false);
@@ -32,7 +32,7 @@ describe('TDD with bubbleSort', () => {
 
   it('should sort a large array of numbers', () => {
     let unsortedArray = randomNumbersArrayGen(1212, 112112);
-    let sortedArray = bubbleSort(unsortedArray);
+    let sortedArray = quickSort(unsortedArray);
 
     assert.equal(Array.isArray(unsortedArray), true);
 
@@ -47,7 +47,7 @@ describe('TDD with bubbleSort', () => {
 
   it('should sort an array of letters', () => {
     let unsortedArray = randomLettersArrayGen(1202);
-    let sortedArray = bubbleSort(unsortedArray);
+    let sortedArray = quickSort(unsortedArray);
 
     assert.equal(Array.isArray(unsortedArray), true);
 
