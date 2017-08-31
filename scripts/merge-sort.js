@@ -12,18 +12,13 @@ function mergeSort(arr) {
 function merge(left, right) {
     var result = [];
     while (left.length && right.length) {
-        if (left[0] <= right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
+      left[0] <= right[0] ?
+      result.push(left.shift()) :
+      result.push(right.shift());
     }
 
-    while (left.length)
-        result.push(left.shift());
+    result.push(...left, ...right)
 
-    while (right.length)
-        result.push(right.shift());
     return result;
 }
 
