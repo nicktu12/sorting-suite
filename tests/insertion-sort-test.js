@@ -1,15 +1,6 @@
-import { assert } from 'chai';
-import insertionSort from '../scripts/insertion-sort'
-
-
-function randomArrayGenerator (count, max) {
-  let numbers = [];
-  for (let i = 0; i < count; i++) {
-    let randomNumber = Math.floor(Math.random() * max);
-    numbers.push(randomNumber)
-  }
-  return numbers
-}
+import {assert, expect} from 'chai';
+import insertionSort from '../scripts/insertion-sort';
+const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
 
 describe('TDD with insertionSort', () => {
 
@@ -17,14 +8,60 @@ describe('TDD with insertionSort', () => {
     assert.equal(typeof insertionSort, 'function');
   })
 
-  it('should should sort an array of more than one number', () => {
+  it('should sort an array of one number', () => {
+    let unsortedArray = [2];
+    let sortedArray = insertionSort(unsortedArray);
 
-    let newArray = randomArrayGenerator(5000, 10000);
-    insertionSort(newArray)
-    assert.equal(newArray[0] <= newArray[1], true);
-    assert.equal(newArray[Math.floor(newArray.length / 2)] <= newArray[Math.floor(newArray.length / 2)+1], true);
-    assert.equal(newArray[newArray.length - 1] >= newArray[newArray.length - 2], true);
-
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], false);
+    }
   })
+
+  it('should should sort an array of two numbers', () => {
+    let unsortedArray = [2, 1];
+    let sortedArray = insertionSort(unsortedArray);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
+  })
+
+  it('should sort a large array of numbers', () => {
+    let unsortedArray = randomNumbersArrayGen(1212, 112112);
+    let sortedArray = insertionSort(unsortedArray);
+
+    assert.equal(Array.isArray(unsortedArray), true);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
+  })
+
+  it('should sort an array of letters', () => {
+    let unsortedArray = randomLettersArrayGen(1202);
+    let sortedArray = insertionSort(unsortedArray);
+
+    assert.equal(Array.isArray(unsortedArray), true);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
+  })
+
+  // it('should log the performance of the algorithm on a large array', () => {
+  //   console.log('do a thing!')
+  // })
 
 })

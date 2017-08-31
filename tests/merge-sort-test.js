@@ -1,15 +1,6 @@
-import { assert, expect } from 'chai';
-const { mergeSort, merge } = require('../scripts/merge-sort');
-
-
-function randomArrayGenerator (count, max) {
-  let numbers = [];
-  for (let i = 0; i < count; i++) {
-    let randomNumber = Math.floor(Math.random() * max);
-    numbers.push(randomNumber)
-  }
-  return numbers
-}
+import {assert, expect} from 'chai';
+import {mergeSort, merge} from '../scripts/merge-sort';
+const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
 
 describe('TDD with mergeSort', () => {
 
@@ -17,11 +8,53 @@ describe('TDD with mergeSort', () => {
     assert.equal(typeof mergeSort, 'function');
   })
 
-  it('should should sort an array of more than one number', () => {
+  it('should sort an array of one number', () => {
+    let unsortedArray = [2];
+    let sortedArray = mergeSort(unsortedArray);
 
-    let newArray = randomArrayGenerator(10001, 100000);
-    let sortedArray = mergeSort(newArray);
-    console.log(newArray.length, sortedArray.length)
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], false);
+    }
+  })
+
+  it('should should sort an array of two numbers', () => {
+    let unsortedArray = [2, 1];
+    let sortedArray = mergeSort(unsortedArray);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
+  })
+
+  it('should sort a large array of numbers', () => {
+    let unsortedArray = randomNumbersArrayGen(1212, 112112);
+    let sortedArray = mergeSort(unsortedArray);
+
+    assert.equal(Array.isArray(unsortedArray), true);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
+    for (let i = 0; i < sortedArray.length; i++) {
+      expect(sortedArray[i] <= sortedArray[i+1], true);
+    }
+  })
+
+  it('should sort an array of letters', () => {
+    let unsortedArray = randomLettersArrayGen(1202);
+    let sortedArray = mergeSort(unsortedArray);
+
+    assert.equal(Array.isArray(unsortedArray), true);
+
+    for (let i = 0; i < unsortedArray.length; i++) {
+      expect(unsortedArray[i] <= unsortedArray[i+1], false);
+    }
+
     for (let i = 0; i < sortedArray.length; i++) {
       expect(sortedArray[i] <= sortedArray[i+1], true);
     }
