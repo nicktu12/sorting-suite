@@ -1,6 +1,6 @@
 import {assert, expect} from 'chai';
 import quickSort from '../scripts/quick-sort';
-const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
+import {randomNumbersArrayGen, randomLettersArrayGen} from '../scripts/random';
 
 describe('TDD with quickSort', () => {
 
@@ -58,10 +58,6 @@ describe('TDD with quickSort', () => {
     for (let i = 0; i < sortedArray.length; i++) {
       expect(sortedArray[i] <= sortedArray[i+1], true);
     }
-  })
-
-  it('should log the performance of the algorithm on a large array', () => {
-    console.log('do a thing!')
   })
 
 })
