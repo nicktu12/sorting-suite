@@ -1,6 +1,6 @@
 import {assert, expect} from 'chai';
 import insertionSort from '../scripts/insertion-sort';
-const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
+import {randomNumbersArrayGen, randomLettersArrayGen} from '../scripts/random';
 
 describe('TDD with insertionSort', () => {
 

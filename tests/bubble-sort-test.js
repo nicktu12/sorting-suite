@@ -1,6 +1,6 @@
 import {assert, expect} from 'chai';
 import bubbleSort from '../scripts/bubble-sort';
-const {randomNumbersArrayGen, randomLettersArrayGen} = require('../scripts/random');
+import {randomNumbersArrayGen, randomLettersArrayGen} from '../scripts/random';
 
 describe('TDD with bubbleSort', () => {
 

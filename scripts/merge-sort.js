@@ -2,8 +2,8 @@ const mergeSort = (array) => {
     if (array.length < 2)
         return array;
 
-    var left   = array.slice(0, parseInt(array.length / 2));
-    var right  = array.slice(parseInt(array.length / 2), array.length);
+    var left   = array.slice(0, Math.floor(array.length / 2));
+    var right  = array.slice(Math.floor(array.length / 2));
 
     return merge(mergeSort(left), mergeSort(right));
 }
