@@ -60,8 +60,4 @@ describe('TDD with bubbleSort', () => {
     }
   })
 
-  // it('should log the performance of the algorithm on a large array', () => {
-  //   console.log('do a thing!')
-  // })
-
 })
